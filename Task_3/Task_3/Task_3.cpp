@@ -31,7 +31,11 @@ int main(int argc, char** argv) {
 	MyVector<int> vec3 = vec;
 	MyVector<int> vec4;
 
+	std::cout << std::boolalpha << vec4.empty() << std::endl;
 	vec4 = vec;
+	std::cout << std::boolalpha << vec4.empty() << std::endl;
+
+	std::cout << "/////////////////" << std::endl;
 
 	Print(vec);
 	Print(vec2);
