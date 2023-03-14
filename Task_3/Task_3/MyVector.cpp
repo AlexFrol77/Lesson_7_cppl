@@ -42,23 +42,35 @@ MyVector<T>::~MyVector() {
 	delete[] ptr_vec;
 	ptr_vec = nullptr;
 }
-
 template <class T>
-T& MyVector<T>::at(int index) {
-	if (index <= _count) {
-		return ptr_vec[index];
+bool MyVector<T>::check_index(int index) {
+	if (_count != 0) {
+		return true;
 	}
 	else {
-		throw std::runtime_error("За границами массива");
+		throw std::runtime_error("Массив пустой");
+	}
+}
+template <class T>
+T& MyVector<T>::at(int index) {
+	if (check_index(index)) {
+		if (index >= 0 && index <= _count) {
+			return ptr_vec[index];
+		}
+		else {
+			throw std::runtime_error("За границами массива");
+		}
 	}
 }
 template <class T>
 T& MyVector<T>::operator[](int index) {
-	if (index >= 0 && index <= _count) {
-		return ptr_vec[index];
-	}
-	else {
-		throw std::runtime_error("За границами массива");
+	if (check_index(index)) {
+		if (index >= 0 && index <= _count && _count != 0) {
+			return ptr_vec[index];
+		}
+		else {
+			throw std::runtime_error("За границами массива");
+		}
 	}
 }
 template <class T>

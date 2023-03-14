@@ -3,6 +3,7 @@
 #include <algorithm>
 #include "MyVector.h"
 #include "MyVector.cpp"
+#include <exception>
 
 template <class T>
 void Print(MyVector<T>& vec) {
@@ -26,10 +27,17 @@ int main(int argc, char** argv) {
 	vec[5] = 77;
 	int temp = vec[1];
 	vec.at(1) = 555;
-
+	
 	MyVector<int> vec2(vec);
 	MyVector<int> vec3 = vec;
 	MyVector<int> vec4;
+
+	try {
+		std::cout << vec4.at(0);
+	} 
+	catch (std::exception &ex) {
+		std::cout << ex.what() << std::endl;
+	}
 
 	std::cout << std::boolalpha << vec4.empty() << std::endl;
 	vec4 = vec;

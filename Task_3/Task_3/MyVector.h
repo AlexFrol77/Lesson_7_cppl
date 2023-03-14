@@ -11,6 +11,7 @@ public:
 
 	T& at(int index);
 	T& operator[](int index);
+	bool check_index(int index);
 	void push_back(T source);
 	void operator=(T source);
 	void add_memory(T source);
