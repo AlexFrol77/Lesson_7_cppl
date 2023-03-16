@@ -4,8 +4,9 @@
 
 template <class T>
 MyVector<T>::MyVector() {
-	this->_size = 0;
+	this->_size = 1;
 	this->_count = 0;
+	this->ptr_vec = new T[_size];
 }
 template <class T>
 MyVector<T>::MyVector(int num) {
@@ -43,7 +44,7 @@ MyVector<T>::~MyVector() {
 	ptr_vec = nullptr;
 }
 template <class T>
-bool MyVector<T>::check_index(int index) {
+bool MyVector<T>::check_index() {
 	if (_count != 0) {
 		return true;
 	}
@@ -53,8 +54,8 @@ bool MyVector<T>::check_index(int index) {
 }
 template <class T>
 T& MyVector<T>::at(int index) {
-	if (check_index(index)) {
-		if (index >= 0 && index <= _count) {
+	if (check_index()) {
+		if (index >= 0 && index <= _count - 1) {
 			return ptr_vec[index];
 		}
 		else {
@@ -64,8 +65,8 @@ T& MyVector<T>::at(int index) {
 }
 template <class T>
 T& MyVector<T>::operator[](int index) {
-	if (check_index(index)) {
-		if (index >= 0 && index <= _count && _count != 0) {
+	if (check_index()) {
+		if (index >= 0) {
 			return ptr_vec[index];
 		}
 		else {
